@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% for recipe in recipes %}
+        <nav>
+            <a href="{{ recipe.link }}">{{ recipe.name }}</a>
+        </nav>
+    {% endfor %}
+{% endblock %} 
