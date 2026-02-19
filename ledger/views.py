@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from .models import Recipe
 
 all_recipes = {
     "recipes": [
@@ -76,3 +79,11 @@ def recipe1(request):
 def recipe2(request):
     ctx = all_recipes["recipes"][1]
     return render(request, "recipe.html", ctx)
+
+class RecipeListView(ListView):
+    model = Recipe
+    template_name = "recipe_list.html" 
+
+class RecipeDetailView(DetailView):
+    model = Recipe
+    template_name = "recipe_detail.html" 
