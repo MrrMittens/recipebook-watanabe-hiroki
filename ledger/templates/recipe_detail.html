@@ -2,9 +2,17 @@
 
 {% block body %}
     <h2>{{ recipe.name }}</h2>
+    <div><b>Author: </b>{{ recipe.author.name }}</div>
     <ul>
         {% for rec in recipe.ingredients.all %}
             <li>{{ rec.ingredient.name }} - {{ rec.quantity }}</li>
         {% endfor %}
     </ul>
+    <div>
+        Created on {{ recipe.created_on }} <br>
+        Last updated on {{ recipe.updated_on }}
+    </div>
+    <br>
+        <i>Looking for another recipe?</i>
+        <a href="/recipes/list">Back to Recipe List</a>
 {% endblock %} 
