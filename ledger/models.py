@@ -7,7 +7,7 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-        return reverse('ledger:recipe_detail', args=[str(self.id)])
+        return reverse('ledger:recipe_list', args=[str(self.id)])
 
 
 class Recipe(models.Model):
@@ -25,12 +25,12 @@ class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        related_name='recipe'
+        related_name='ingredients'
     )
     ingredient = models.ForeignKey(
         Ingredient,
         on_delete=models.CASCADE,
-        related_name='ingredients'
+        related_name='recipes'
     )
 
     def __str__(self):

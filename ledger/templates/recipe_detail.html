@@ -3,7 +3,7 @@
 {% block body %}
     <h2>{{ recipe.name }}</h2>
     <ul>
-        {% for rec in recipe.recipe.all %}
+        {% for rec in recipe.ingredients.all %}
             <li>{{ rec.ingredient.name }} - {{ rec.quantity }}</li>
         {% endfor %}
     </ul>
