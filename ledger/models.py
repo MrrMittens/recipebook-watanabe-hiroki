@@ -20,7 +20,14 @@ class Ingredient(models.Model):
 
 
 class Recipe(models.Model):
+    author = models.ForeignKey(
+        Profile,
+        on_delete=models.CASCADE,
+        related_name='authored_recipes',
+    )
     name = models.CharField(max_length=100)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -31,16 +38,15 @@ class Recipe(models.Model):
 
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=100)
-
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        related_name='ingredients'
+        related_name='ingredients',
     )
     ingredient = models.ForeignKey(
         Ingredient,
         on_delete=models.CASCADE,
-        related_name='recipes'
+        related_name='recipes',
     )
 
     def __str__(self):
