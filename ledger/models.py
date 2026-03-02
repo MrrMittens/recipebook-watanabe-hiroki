@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(50)
-    bio = models.TextField(blank=True)
+    name = models.CharField(max_length=50)
+    bio = models.TextField(min_field=255)
 
 
 class Ingredient(models.Model):
