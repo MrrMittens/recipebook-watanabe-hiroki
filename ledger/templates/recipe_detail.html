@@ -4,8 +4,28 @@
     <h2>{{ recipe.name }} Recipe</h2>
 {% endblock %}
 
+{% block styles %}
+<style>
+    img {
+        max-width: 400px;
+        height: auto;
+    }
+</style>
+{% endblock %}
+
 {% block body %}
-    <div><b>Author: </b>{{ recipe.author.name }}</div>
+    {% for img in recipe.image.all %}
+        <div>
+            <img src="{{ img.image.url }}" alt="{{ img.description }}">
+        </div>
+    {% empty %}
+        <p>No images available for this recipe.</p>
+    {% endfor %}
+
+    <div>
+        <b>Author: </b>{{ recipe.author.name }}
+    </div>
+
     <ul>
         {% for rec in recipe.ingredients.all %}
             <li>{{ rec.ingredient.name }} - {{ rec.quantity }}</li>
