@@ -7,8 +7,8 @@
 {% block styles %}
 <style>
     img {
-        max-width: 400px;
-        height: auto;
+        width: auto;
+        max-height: 300px;
     }
 </style>
 {% endblock %}
@@ -22,6 +22,9 @@
         <p>No images available for this recipe.</p>
     {% endfor %}
 
+    <i>Add your own images to the recipe!</i>
+    <a href="{% url 'ledger:recipe_image' pk=recipe.pk %}">Add Image</a>
+
     <div>
         <b>Author: </b>{{ recipe.author.name }}
     </div>
@@ -29,13 +32,16 @@
     <ul>
         {% for rec in recipe.ingredients.all %}
             <li>{{ rec.ingredient.name }} - {{ rec.quantity }}</li>
+        {% empty %}
+            <li>No ingredients list yet for this recipe.</li>
         {% endfor %}
     </ul>
     <div>
         Created on {{ recipe.created_on }} <br>
         Last updated on {{ recipe.updated_on }}
     </div>
+
     <br>
-        <i>Looking for another recipe?</i>
-        <a href="/recipes/list">Back to Recipe List</a>
+    <i>Looking for another recipe?</i>
+    <a href="/recipes/list/">Back to Recipe List</a>
 {% endblock %} 
