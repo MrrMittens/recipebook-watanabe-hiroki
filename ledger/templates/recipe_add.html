@@ -5,9 +5,13 @@
 {% endblock %}
 
 {% block body %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save Recipe</button>
-</form>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Recipe</button>
+    </form>
+
+    <br>
+    <i>Change your mind?</i>
+    <a href="{% url 'ledger:recipe_list' %}">Back to Recipe List</a>
 {% endblock %}

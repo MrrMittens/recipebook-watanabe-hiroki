@@ -18,7 +18,7 @@
     <br>
     {% if user.is_authenticated %}
         <i>Want to create your own recipe?</i>
-        <a href="/recipe/add/">Head to Recipe Form</a>
+        <a href="{% url 'ledger:recipe_add' %}">Head to Recipe Form</a>
     {% else %}
         <i>Login to your account to create a new recipe</i>
     {% endif %}

@@ -5,12 +5,12 @@
 {% endblock %}
 
 {% block styles %}
-<style>
-    img {
-        width: auto;
-        max-height: 300px;
-    }
-</style>
+    <style>
+        img {
+            width: auto;
+            max-height: 300px;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -43,5 +43,5 @@
 
     <br>
     <i>Looking for another recipe?</i>
-    <a href="/recipes/list/">Back to Recipe List</a>
+    <a href="{% url 'ledger:recipe_list' %}">Back to Recipe List</a>
 {% endblock %} 
