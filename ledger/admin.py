@@ -25,7 +25,7 @@ class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
     list_display = ('name',)
     search_fields = ('name', 'author',)
-    inlines = [RecipeIngredientInLine, RecipeImageInline,]
+    inlines = (RecipeIngredientInLine, RecipeImageInline,)
 
 
 class IngredientAdmin(admin.ModelAdmin):

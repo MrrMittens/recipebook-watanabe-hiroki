@@ -23,7 +23,7 @@
     {% endfor %}
 
     <i>Add your own images to the recipe!</i>
-    <a href="{% url 'ledger:recipe_image' pk=recipe.pk %}">Add Image</a>
+    <a href="{% url 'ledger:recipe_image' pk=recipe.pk %}">Head to Image Form</a>
 
     <div>
         <b>Author: </b>{{ recipe.author.name }}

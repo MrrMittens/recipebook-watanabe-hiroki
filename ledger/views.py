@@ -22,8 +22,8 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'recipe_add.html'
-    success_url = reverse_lazy("ledger:recipe_list")
     login_url = '/accounts/login/'
+    success_url = reverse_lazy("ledger:recipe_list")
 
     def form_valid(self, form):
         form.instance.author = self.request.user.profile
@@ -36,15 +36,15 @@ class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     template_name = 'recipe_image.html'
     login_url = '/accounts/login/'
 
-    def form_valid(self, form):
-        form.instance.recipe = Recipe.objects.get(pk=self.kwargs['pk'])
-        return super().form_valid(form)
-
     def get_success_url(self):
         return reverse_lazy(
             'ledger:recipe_detail',
             kwargs={'pk': self.object.recipe.pk}
         )
+
+    def form_valid(self, form):
+        form.instance.recipe = Recipe.objects.get(pk=self.kwargs['pk'])
+        return super().form_valid(form)
 
     # used to pass recipe to image to get name and pk
     def get_context_data(self, **kwargs):
