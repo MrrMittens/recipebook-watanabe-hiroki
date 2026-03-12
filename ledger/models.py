@@ -9,6 +9,9 @@ class Profile(models.Model):
     name = models.CharField(max_length=50)
     bio = models.TextField(validators=[MinLengthValidator(256)])
 
+    def __str__(self):
+        return self.name
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
@@ -66,4 +69,4 @@ class RecipeImage(models.Model):
     )
 
     def __str__(self):
-        return f"{self.recipe} image"
+        return f"Image in {self.recipe} Recipe"
